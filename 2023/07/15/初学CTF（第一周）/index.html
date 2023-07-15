@@ -6,15 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: ctf | Hexo</title>
+  <title>初学CTF（第一周） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/tags/ctf/index.html">
+  <meta name="description" content="题目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学CTF（第一周）">
+<meta property="og:url" content="http://example.com/2023/07/15/%E5%88%9D%E5%AD%A6CTF%EF%BC%88%E7%AC%AC%E4%B8%80%E5%91%A8%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题目">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/image-20230715163149402.png">
+<meta property="og:image" content="http://example.com/img/image-20230715163550996.png">
+<meta property="og:image" content="http://example.com/img/image-20230715163722435.png">
+<meta property="og:image" content="http://example.com/img/image-20230715164948923.png">
+<meta property="og:image" content="http://example.com/img/image-20230715165148918.png">
+<meta property="og:image" content="http://example.com/img/image-20230715165732907.png">
+<meta property="og:image" content="http://example.com/img/image-20230715174155174.png">
+<meta property="og:image" content="http://example.com/img/image-20230715173259169.png">
+<meta property="article:published_time" content="2023-07-15T08:31:16.000Z">
+<meta property="article:modified_time" content="2023-07-15T14:58:25.836Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/image-20230715163149402.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,36 +164,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-初学CTF（第一周）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      初学CTF（第一周）
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/15/%E5%88%9D%E5%AD%A6CTF%EF%BC%88%E7%AC%AC%E4%B8%80%E5%91%A8%EF%BC%89/" class="archive-article-date">
+
+        
+        <a href="/2023/07/15/%E5%88%9D%E5%AD%A6CTF%EF%BC%88%E7%AC%AC%E4%B8%80%E5%91%A8%EF%BC%89/" class="archive-article-date">
   	<time datetime="2023-07-15T08:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-15</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/15/%E5%88%9D%E5%AD%A6CTF%EF%BC%88%E7%AC%AC%E4%B8%80%E5%91%A8%EF%BC%89/">初学CTF（第一周）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="/../img/image-20230715163149402.png" alt="image-20230715163149402"></p>
+<span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h2><p>主要是看后半部分来解题，一行行看</p>
+<p><img src="/../img/image-20230715163550996.png" alt="image-20230715163550996"></p>
+<p>这个代码说明应该是要通过对参数id进行赋值来进行解题。</p>
+<p><img src="/../img/image-20230715163722435.png" alt="image-20230715163722435"></p>
+<p>下一行，首先要先了解parse_str()函数，parse_str(字符串)函数是把括号内的字符串参数解析到变量中，比如parse_str(“name&#x3D;Mike&amp;&amp;age&#x3D;18”); 运行该代码后会使变量$name&#x3D;Mike和变量$age&#x3D;18。</p>
+<p>如果后面还有个变量参数，比如parse_str(“name&#x3D;Mike&amp;&amp;age&#x3D;18”,$p)，那么字符串就会被解析为数组存在变量$p中，打印$p，显示为：</p>
+<p><img src="/../img/image-20230715164948923.png" alt="image-20230715164948923"></p>
+<p>综合来看这两行代码，就是id需要接收一个字符串的传参，然后再作为parse_str()函数的参数被解析到某个变量中。</p>
+<p><img src="/../img/image-20230715165148918.png" alt="image-20230715165148918"></p>
+<p>接下来的if判断是关键，只要满足if判断条件，就能拿到flag（die()函数可以理解为输出括号内的参数后就退出）</p>
+<p><img src="/../img/image-20230715165732907.png" alt="image-20230715165732907"></p>
+<p>$a一开始就赋值了，值为$a &#x3D; ‘TESTCTF’; $a[0]&#x3D;’T’，显然不等于’QNKCDZO’，满足前面的条件，而md5(‘$a[0]’)&#x3D;md5(‘T’)&#x3D;b9ece18c950afbfa6b0fdbfa4ff731d3，md5(‘QNKCDZO’)&#x3D;0e830400451993494058024219903391</p>
+<p>两者显然不相等，说明$a[0]应该在前面的parse_str()函数进行重新赋值了。</p>
+<p>if判断的前半部分很好解决，关键是后面的那个判断，而后面的那个判断我们发现他是个弱类型判断，而md5(‘QNKCDZO’)&#x3D;0e830400451993494058024219903391，则仅需md5($a[0])&#x3D;0exxxxxxxxxx，该判断条件就能成立。那只要找一个值，它的md5是0e开头的，然后赋值给$a[0]，应该就可以了。</p>
+<p>这里百度了一下md5是0e开头的值有哪些</p>
+<p><img src="/../img/image-20230715174155174.png" alt="image-20230715174155174"></p>
+<p>发现第一个就是这个题目的，说明方向对了，我们再随便选另一个值s155964671a。</p>
+<p>下一个问题来了，怎么让$a[0]&#x3D;s155964671a呢，回到前面两行代码</p>
+<p><img src="/../img/image-20230715173259169.png" alt="image-20230715173259169"></p>
+<p>前面说到，我们应该要利用parse_str()函数使$a[0]实现重新赋值，那么parse_str()的参数应该是”a[0]&#x3D;s155964671a”，也就是$id&#x3D;”a[0]&#x3D;s155964671a”，刚好前面只接受id的传参，而url传参的参数就是以字符串的形式传入，那么只要在url末尾添上?id&#x3D;a[0]&#x3D;s155964671a，传入id的值，就能拿到flag！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该题是入门级的题目，主要考察的是弱类型判断以及md5碰撞相关的知识，以后碰到判断条件是&#x3D;&#x3D;的要往弱类型判断方面去想，弱类型判断不需要完全相同的两个值也是可能判断相等的，像上面的‘’0e830400451993494058024219903391‘’&#x3D;&#x3D;‘’0e342768416822451524974117254469‘’，这种两边都是0e开头科学计数法的形式的比较，会先将他们转成数字，然后再进行比较，由于0乘什么都是零，因此他们就相等了。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,57 +248,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/15/%E5%88%9D%E5%AD%A6CTF%EF%BC%88%E7%AC%AC%E4%B8%80%E5%91%A8%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2023-07-15T01:49:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/07/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的第一篇博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/15/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -264,9 +370,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
