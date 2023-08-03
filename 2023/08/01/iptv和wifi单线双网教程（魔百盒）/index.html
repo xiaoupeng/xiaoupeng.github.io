@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>iptv和wifi单线双网教程（魔百盒） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="意义​		实现了光猫单线接魔百盒（机顶盒），自动切换网络，iptv使用内网，按遥控器设定好的某个键可以打开第三方应用并转换为wifi连接，按home键可以返回iptv界面并切换成内网。 心路历程​		一开始是低端海信智能电视（安卓4.4.2）+移动魔百盒301H的配置 ​		本来看iptv就用机顶盒，看第三方应用就用智能电视的，然而某天家里升级了千兆网，然后就发现智能电视的系统只能连接2.4G的w">
+  <meta name="description" content="意义​		实现了光猫单线接魔百盒（机顶盒），自动切换网络，iptv使用内网，按遥控器设定好的某个键可以打开第三方应用并转换为wifi连接，按home键可以返回iptv界面并切换成内网。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iptv和wifi单线双网教程（魔百盒）">
 <meta property="og:url" content="http://example.com/2023/08/01/iptv%E5%92%8Cwifi%E5%8D%95%E7%BA%BF%E5%8F%8C%E7%BD%91%E6%95%99%E7%A8%8B%EF%BC%88%E9%AD%94%E7%99%BE%E7%9B%92%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="意义​		实现了光猫单线接魔百盒（机顶盒），自动切换网络，iptv使用内网，按遥控器设定好的某个键可以打开第三方应用并转换为wifi连接，按home键可以返回iptv界面并切换成内网。 心路历程​		一开始是低端海信智能电视（安卓4.4.2）+移动魔百盒301H的配置 ​		本来看iptv就用机顶盒，看第三方应用就用智能电视的，然而某天家里升级了千兆网，然后就发现智能电视的系统只能连接2.4G的w">
+<meta property="og:description" content="意义​		实现了光猫单线接魔百盒（机顶盒），自动切换网络，iptv使用内网，按遥控器设定好的某个键可以打开第三方应用并转换为wifi连接，按home键可以返回iptv界面并切换成内网。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-01T08:47:44.000Z">
-<meta property="article:modified_time" content="2023-08-03T02:45:44.779Z">
+<meta property="article:modified_time" content="2023-08-03T02:53:48.607Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="搞机教程">
 <meta name="twitter:card" content="summary">
@@ -176,6 +176,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>​		实现了光猫单线接魔百盒（机顶盒），自动切换网络，iptv使用内网，按遥控器设定好的某个键可以打开第三方应用并转换为wifi连接，按home键可以返回iptv界面并切换成内网。</p>
+<span id="more"></span>
+
 <h2 id="心路历程"><a href="#心路历程" class="headerlink" title="心路历程"></a>心路历程</h2><p>​		一开始是低端海信智能电视（安卓4.4.2）+移动魔百盒301H的配置</p>
 <p>​		本来看iptv就用机顶盒，看第三方应用就用智能电视的，然而某天家里升级了千兆网，然后就发现智能电视的系统只能连接2.4G的wifi，网速在5mb&#x2F;s左右，用网线连接就更低了。这样太浪费我的千兆网了，本来看网上教程有说可以接个外置网卡达到千兆网，然而需要安卓9以上的系统，遂放弃。然后就把目标转移到机顶盒上面。</p>
 <p>​		一开始机顶盒有诸多限制。</p>
@@ -207,13 +209,13 @@
  #参考图，这里是运行电视猫的，u0 之后那部分便是我们要用的名称
 #mCurrentFocus=Window&#123;41b735d8 u0 #com.moretv.android/com.moretv.module.lowmm.SingleActivity&#125;
 #获取当贝桌面同理。
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网](../img/204359zozkxskhh9yuuzmo.jpg)</span><br><span class="line"></span><br><span class="line">​		这里给出iptv（不同省份，盒子的应该不一样）和当贝的activity</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网](../img/204359zozkxskhh9yuuzmo.jpg)</span><br><span class="line"></span><br><span class="line">​		</span><br><span class="line"></span><br><span class="line">​		这里给出iptv（不同省份，盒子的应该不一样）和当贝的activity</span><br><span class="line"></span><br></pre></td></tr></table></figure>
  iptv：cn.gd.snm.snmcm/cn.gd.snm.module_home.activity.NormHomeAc
  dangbei：com.dangbei.tvlauncher/com.dangbei.launcher.ui.main.MainActivity
 </code></pre>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​		然后记录好键位的代码和相关应用的activity。</span><br><span class="line"></span><br><span class="line">​		参考 [B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网_中兴机顶盒_ZNDS (2023_8_2 17_17_17).html](..\html\B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网_中兴机顶盒_ZNDS (2023_8_2 17_17_17).html) </span><br><span class="line"></span><br><span class="line">​		</span><br><span class="line"></span><br><span class="line">二、根据实际情况修改脚本</span><br><span class="line"></span><br><span class="line">​		脚本思路：一开始其实是这个while循环，while（1）循环代表循环内部代码一直会运行下去，循环内部代码就是一直监测按键，如果发现按了F2键，就打开wifi，关闭无线网络，并打开当贝桌面；如果发现按了home键，就打开有线网络，关闭wifi（按home键默认会开启iptv，不用设置）。之后我发现如果我是在打开wifi的情况下把机顶盒关掉了，那么再次开启机顶盒的时候wifi就是开着的，而开启机顶盒是默认进入iptv界面的，这时候应该要把wifi给关了才对，于是在while循环前面加了一句代码让它开机就关掉wifi。至于为什么不再加句代码打开有线网络，是因为开启机顶盒的时候它默认是连接有线网络的，不用多此一举。然后我发现加了开机关闭wifi的代码后其实并没有执行，猜测是代码运行太快，而wifi模块可能还没准备好，使得代码失效了，因此在前面又添加了一句休眠语句，意思是15秒后再执行后续代码。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​		然后记录好键位的代码和相关应用的activity。</span><br><span class="line"></span><br><span class="line">​		参考 [B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网_中兴机顶盒_ZNDS (2023_8_2 17_17_17).html](..\html\B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网_中兴机顶盒_ZNDS (2023_8_2 17_17_17).html) </span><br><span class="line"></span><br><span class="line">​		</span><br><span class="line"></span><br><span class="line">**二、根据实际情况修改脚本**</span><br><span class="line"></span><br><span class="line">​		脚本思路：一开始其实是这个while循环，while（1）循环代表循环内部代码一直会运行下去，循环内部代码就是一直监测按键，如果发现按了F2键，就打开wifi，关闭无线网络，并打开当贝桌面；如果发现按了home键，就打开有线网络，关闭wifi（按home键默认会开启iptv，不用设置）。之后我发现如果我是在打开wifi的情况下把机顶盒关掉了，那么再次开启机顶盒的时候wifi就是开着的，而开启机顶盒是默认进入iptv界面的，这时候应该要把wifi给关了才对，于是在while循环前面加了一句代码让它开机就关掉wifi。至于为什么不再加句代码打开有线网络，是因为开启机顶盒的时候它默认是连接有线网络的，不用多此一举。然后我发现加了开机关闭wifi的代码后其实并没有执行，猜测是代码运行太快，而wifi模块可能还没准备好，使得代码失效了，因此在前面又添加了一句休眠语句，意思是15秒后再执行后续代码。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>sleep 15         #15秒后再执行下面的代码<br>svc wifi disable      #关闭wifi</p>
 <p>while [ 1 ]      #死循环，一直执行<br>do<br>    rm_code&#x3D;<code>getevent -c 1 /dev/input/event0</code>	 #监测按键</p>
 <pre><code>if [ &quot;$rm_code&quot; = &quot;0001 003c 00000001&quot; ] ; then   #如果监测到按键为F2键，则
