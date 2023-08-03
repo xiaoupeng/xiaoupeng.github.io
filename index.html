@@ -152,6 +152,148 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iptv和wifi单线双网教程（魔百盒）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/08/01/iptv%E5%92%8Cwifi%E5%8D%95%E7%BA%BF%E5%8F%8C%E7%BD%91%E6%95%99%E7%A8%8B%EF%BC%88%E9%AD%94%E7%99%BE%E7%9B%92%EF%BC%89/">iptv和wifi单线双网教程（魔百盒）</a>
+    </h1>
+  
+
+        
+        <a href="/2023/08/01/iptv%E5%92%8Cwifi%E5%8D%95%E7%BA%BF%E5%8F%8C%E7%BD%91%E6%95%99%E7%A8%8B%EF%BC%88%E9%AD%94%E7%99%BE%E7%9B%92%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2023-08-01T08:47:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>​		实现了光猫单线接魔百盒（机顶盒），自动切换网络，iptv使用内网，按遥控器设定好的某个键可以打开第三方应用并转换为wifi连接，按home键可以返回iptv界面并切换成内网。</p>
+<h2 id="心路历程"><a href="#心路历程" class="headerlink" title="心路历程"></a>心路历程</h2><p>​		一开始是低端海信智能电视（安卓4.4.2）+移动魔百盒301H的配置</p>
+<p>​		本来看iptv就用机顶盒，看第三方应用就用智能电视的，然而某天家里升级了千兆网，然后就发现智能电视的系统只能连接2.4G的wifi，网速在5mb&#x2F;s左右，用网线连接就更低了。这样太浪费我的千兆网了，本来看网上教程有说可以接个外置网卡达到千兆网，然而需要安卓9以上的系统，遂放弃。然后就把目标转移到机顶盒上面。</p>
+<p>​		一开始机顶盒有诸多限制。</p>
+<p>​		首先就是安装第三方应用，查了很多教程，最后用电脑通过adb给安装上了（当然需要先找教程打开机顶盒的adb）。</p>
+<p>​		然后就是wifi问题，设置界面有密码，得百度看别人的密码是什么，一个个地试，好在移动盒子的密码很简单，是10086。但是打开wifi后，问题又来了，当时光猫的iptv口是和机顶盒直接相连的。也就是说如果打开wifi，机顶盒是既有网线连接（iptv专用线路），又有wifi连接，此时看iptv电视貌似用的是wifi网络而不是iptv专用网络（因为会卡，而iptv专用线路是几乎不卡的）。而切换到第三方应用后wifi虽然是连着的，但是没有网络。此时又诞生了一个问题：iptv和第三方应用的网络怎么共存呢？就是希望看iptv的时候有网，切换到第三方应用的时候也有网。然后找了大量的教程，尝试了带iptv口的路由器，甚至进了光猫后台尝试设置光猫，尝试把iptv专用口设到其它lan口和尝试光猫、路由器、机顶盒之间各种接线方式，结果都没有用。当时觉得有线和wifi是不能共存的，直接放弃了这种方式。然后思索了很久突然想到可以在看iptv的时候把网线接到光猫的iptv口，而使用第三方应用的时候把网线接到光猫的其他lan口（其他lan口好像限制了网络，需要到光猫后台设置）。实践后确实是可以的，这样就解决了看iptv的时候有网，切换到第三方应用的时候也有网。但是也颇为麻烦，每次需要手动拔插网线，之后去网上买了个1进2出的网络切换器，用按按钮的方式来代替手动拔插网线，感觉尚可就没有继续研究更好的方案。</p>
+<p>​		之后又出现了个问题，就是iptv界面根本没有入口可以打开第三方应用。其实iptv是有个本地应用界面的，但是完全不显示我装的那些应用，所以第三方应用需要通过adb命令才能打开。但是我不可能看个电视还要拿个电脑出来连接机顶盒，然后通过adb来打开应用吧，太傻了，这操作可以把我想看电视的欲望磨灭掉。然后搜了很多教程，找到一个说可以用悟空遥控器的，确实好用，只要tv端和手机端处于同一局域网就可以，而且开机自动启动，开机后就能拿手机上的悟空遥控器打开第三方应用了。但是问题又来了，就出在这个同一局域网上，机顶盒连接光猫其他lan口的时候，ip地址是10.xx.xx.xx，而手机连接路由器wifi，ip地址是192.xx.xx.xx，两者显然不是同一网段的（即不是同一局域网），其实光猫也自带wifi，连接光猫的wifi就能解决这个问题。然而我平时肯定都是连接路由器的wifi的，因为支持5G网络，速度比2.4G的快上许多，我不可能当看电视的时候又切换到光猫的wifi，那也太麻烦了。于是又在网上找了许多教程，想把光猫和路由器弄在同一局域网里。一开始是让路由器取消dhcp，让光猫来分配ip地址，这样就在同一网段了，此时路由器充当的是中继器（后来我发现这种状态的路由器没办法给switch加速，并且机顶盒连接到光猫的其他lan口时其实是可以连接wifi的，是有网络的，只有连接到光猫的iptv口的时候wifi才会没网，于是之后我又改了回来）</p>
+<p>​		解决了上述的问题，其实已经能同时正常使用iptv功能和第三方应用了：当想看iptv时，网线切换到光猫的iptv口，当想使用第三方应用观影时，网线切换到光猫的其他lan口，之后就可以使用手机端的悟空遥控器打开第三方应用观影。</p>
+<p>​		而最近又突然改进了策略是因为我很快就要离家去学校，而父母并不会使用手机来打开第三方应用。当时我想着不如直接用回智能电视系统来观影就好了，父母都会操作。但我尝试把常用的观影软件移植到智能电视系统时，发现没法正常使用。因为很多时候影片的容量非常大，几百MB甚至上G，而智能电视系统的内存只有几百MB，一看就会闪退，因为没有那么多容量供缓存，没办法，看惯了2k、4k就不想看那种模糊的影片了。于是又开始想办法能不能使用机顶盒自带的遥控器来开启第三方应用，而不需要使用手机端上的悟空遥控器来操作。然后就找一些修改遥控器键位功能的教程，比如我想把某个键改成可以开启第三方桌面，然后根据教程获取遥控器键位对应的代码，然后尝试修改机顶盒根目录下的keyfunction.xml文件，发现改里面的内容压根没用，而有一些教程涉及到了相当专业的知识，遥控器按键实现的原理什么的，感觉这个方向有点难以实现。好在搜索过程中又发现了一些其他思路的教程，比如iptv和第三方桌面相互切换什么的。</p>
+<p>​		就在网页上搜iptv和当贝桌面互相切换，还真搜到了不少教程，期间还发现了可以iptv和wifi自动切换的教程。有个是采用写好的apk来手动切换网络，但我觉得太麻烦，我更偏向于那些采用shell脚本来实现的，只要之后设置shell脚本开机启动就行了。但网络上的那些采取shell脚本的教程都太具有特殊性了，大多数是只适用于某些特定型号的机顶盒，而且那些shell脚本有的非常长，而我当时对shell脚本一窍不通，只知道一些通用的编程语法，但也不足让我理解那些shell代码的含义。更多的情况是那些教程很多都是引用同一个人的，思路并不是很清晰，又或者我实践过是无用的，比如有一篇文章说到可以通过获取当前运行的app的appid来进行判断，首先编写shell脚本，打开你想要获取appid的应用，运行shell脚本来获取appid，比如iptv的appid是8，那就可以进行判断，若当前获取的appid&#x3D;8，则开启有线网卡，关闭无线网卡；如果不是8的话就开启无线网卡，关闭有线网卡。然后我在获取appid这一步就失败了，不管我打开哪个应用，appid都显示是0。虽然失败了，但这种思路我认为是正确的方向。虽然我不能获取appid，但我可以换个判断条件，前面我获取了按键的代码，那我只要判断一下，当按键按下的时候就切换网络不就行了。有个exitIPTV.sh的脚本里正好判断按键，识别到就跳到第三方应用的代码，尝试过是可以成功的，然后我再到其他人的代码堆里找到关于开关有线网卡和wifi的代码，自己重新写个判断逻辑就行了。即：当按下假设是F2键时，就跳到当贝桌面，同时关闭有线网卡，开启wifi；当按下home键（home键默认是跳到iptv界面的）时，就开启有线网卡，关闭wifi。然后就是让脚本开机自启了，由于机顶盒没root，那个脚本管理器Script manager没有作用，不能直接设置开机重启。于是尝试在init.rc那里加上相关服务代码，发现重启后init.rc文件就会重置了，没作用，尝试了好多个.rc的文件都是这样，于是放弃了这种方法。打开init.rc文件，看到里面有些脚本是开机自启的，我想脚本总不会开机就重置了吧，于是我就找了个startsoftdetector.sh脚本，想把我的shell代码复制到最后，一起执行，然后发现不行，代码复制到最后，它只执行前面部分的代码就退出了。而如果我把我的shell代码赋值到最前面的话，那就跟删掉文件本身的代码没区别了，因为我的那个shell脚本是死循环。结果尝试后发现home键没反应了，看了下文件原本的代码，貌似就是与键位相关的脚本，看来是不能随便删除，于是我最终换了个脚本，叫startstbagent.sh。貌似是机顶盒代理什么的脚本，好像用不着代理，就选这个了，因为shell没有多行注释，我就把原代码都装进一个函数里面，只要不调用就相当于没有，但要是到时候想恢复也容易（同时也备份了一个在sdcard目录下）。然后把我的代码放到最前面，重启机顶盒，发现脚本成功开机自启，搞定啦。</p>
+<p>​		后面我发现还有个问题就是如果是看第三方应用的时候就直接关掉机顶盒，那么机顶盒是在wifi开启、有线网卡关闭的时候被断电关闭的，那么再次开启的时候那就是有wifi、有线网卡断开的状态，而开启机顶盒时默认是进入iptv界面的，此时不能开启wifi，也不能关掉有线网卡。但我尝试过后发现机顶盒重启有线网卡就会自动开启了，不用进行设置，就只要把WiFi关掉就好了，于是修改脚本，在最前面加上了一个代码表示开机就关掉wifi，结果怎么样都不起作用。然后我突然想到，会不会是机顶盒开机时系统还没准备好相应的设置，就执行了该代码，就是说wifi模块还没开始配置，就运行了该代码，那肯定起不了作用。于是我想着是不是可以延迟一下代码的执行时间，等到wifi模块加载出来了，代码再去运行就可以了。刚好就是有个sleep函数可以满足我的要求，我还特意用手机记录从按下机顶盒按钮开始到完全进入iptv界面所需的时间，是23秒。于是我再关掉wifi的代码前面再加一个sleep 23，表示23秒后再执行后续的代码。实践证明我的猜想是正确的，然后我又探究了一下最佳的休眠时间，23秒太晚，进入iptv后再过几秒才会关掉wifi（不过无伤大雅），我又试了一下10秒，结果脚本也成功执行，但是怕有时候开机慢了脚本就不执行了，最终选了个中间数，15秒。至此，就没有任何问题了，成功实现我的设想。家里人喜欢看iptv的，就像以前那样，直接打开机顶盒就是iptv的界面，再也不用按那个网络切换器来切换网络了（有时候切到第三方界面就关机了，再次开机iptv那边就会没网络，需要切换网络）。同时也不用再掏出手机来遥控电视了，直接用遥控器就能进入第三方应用。大成功！真是太有成就感了！！！</p>
+<p> <a href="..%5Chtml(4.7%E6%9B%B4%E6%96%B0">(4.7更新)全新通用无害解决无法从IPTV界面切换回第三方桌面_华为悦盒_ZNDS (2023_8_1 16_50_33).html</a>全新通用无害解决无法从IPTV界面切换回第三方桌面_华为悦盒_ZNDS (2023_8_1 16_50_33).html) </p>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><p>​		只记录如何实现光猫iptv口直连机顶盒，按下F2键就进入当贝桌面，同时网络自动切换到wifi，关闭有线网；按下home键就回到IPTV界面，同时网络自动切换到有线网络，关闭wifi。</p>
+<p><strong>前提条件：</strong></p>
+<p>​		机顶盒已经能够装第三方应用，并且能打开。同时知道设置页面的密码。能够连接电脑使用adb。</p>
+<p><strong>开始操作：</strong></p>
+<p> <strong>一、确定要使用的按键、桌面</strong></p>
+<p>​		首先需要知道键位对应的代码，比如home键（IPTV）和F2键（当贝），打开adb，进入adb shell，然后执行如下代码：运行后按遥控器想知道代码的键位，就会显示出键位对应的代码了</p>
+<pre><code>    getevent -c 1 /dev/input/event0
+</code></pre>
+<p>​		或者把getrmcode.sh发送到机顶盒的&#x2F;sdcard&#x2F;下面（使用刷机精灵的adb，会有教程），然后运行，运行后按遥控器想知道代码的键位，就会显示出键位对应的代码了，记录下来，我的是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F2(DANGBEI)         0001 003c 00000001</span><br><span class="line">home(iptv)          0001 0066 00000001		</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#把电脑文件d:\getrmcode.sh推送到机顶盒的sdcard中</span><br><span class="line">adb remount #获取文件读取权限</span><br><span class="line">adb push d:\getrmcode.sh /sdcard/</span><br><span class="line">#把机顶盒sdcard中的getrmcode.sh发送到电脑d盘根目录</span><br><span class="line">adb remount</span><br><span class="line">adb pull /sdcard/getrmcode.sh d:\</span><br><span class="line">#如果要修改机顶盒根目录/下的文件，把电脑文件d:\getrmcode.sh推送到机顶盒的\中，需要执行如下代码，否则会没权限</span><br><span class="line">adb root</span><br><span class="line">adb remount</span><br><span class="line">adb shell #进入shell</span><br><span class="line">mount -o remount rw /</span><br><span class="line">exit  #退出shell</span><br><span class="line">adb push d:\getrmcode.sh /  #推送文件到机顶盒根目录/下</span><br></pre></td></tr></table></figure>
+
+<p>​		然后通过adb来判断当前运行的应用的activity，需要知道iptv的和dangbei的，把电视遥控到你想要知道的那个应用。然后adb shell，再执行下面代码</p>
+<ol>
+<li><pre><code> dumpsys window windows | grep -E &#39;mCurrentFocus|mFocusedApp&#39;
+ 
+ #参考图，这里是运行电视猫的，u0 之后那部分便是我们要用的名称
+#mCurrentFocus=Window&#123;41b735d8 u0 #com.moretv.android/com.moretv.module.lowmm.SingleActivity&#125;
+#获取当贝桌面同理。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网](../img/204359zozkxskhh9yuuzmo.jpg)</span><br><span class="line"></span><br><span class="line">​		这里给出iptv（不同省份，盒子的应该不一样）和当贝的activity</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ iptv：cn.gd.snm.snmcm/cn.gd.snm.module_home.activity.NormHomeAc
+ dangbei：com.dangbei.tvlauncher/com.dangbei.launcher.ui.main.MainActivity
+</code></pre>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​		然后记录好键位的代码和相关应用的activity。</span><br><span class="line"></span><br><span class="line">​		参考 [B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网_中兴机顶盒_ZNDS (2023_8_2 17_17_17).html](..\html\B860AV1.1-T 优化第四弹：两键切换 IPTV 与当贝桌面、双网_中兴机顶盒_ZNDS (2023_8_2 17_17_17).html) </span><br><span class="line"></span><br><span class="line">​		</span><br><span class="line"></span><br><span class="line">二、根据实际情况修改脚本</span><br><span class="line"></span><br><span class="line">​		脚本思路：一开始其实是这个while循环，while（1）循环代表循环内部代码一直会运行下去，循环内部代码就是一直监测按键，如果发现按了F2键，就打开wifi，关闭无线网络，并打开当贝桌面；如果发现按了home键，就打开有线网络，关闭wifi（按home键默认会开启iptv，不用设置）。之后我发现如果我是在打开wifi的情况下把机顶盒关掉了，那么再次开启机顶盒的时候wifi就是开着的，而开启机顶盒是默认进入iptv界面的，这时候应该要把wifi给关了才对，于是在while循环前面加了一句代码让它开机就关掉wifi。至于为什么不再加句代码打开有线网络，是因为开启机顶盒的时候它默认是连接有线网络的，不用多此一举。然后我发现加了开机关闭wifi的代码后其实并没有执行，猜测是代码运行太快，而wifi模块可能还没准备好，使得代码失效了，因此在前面又添加了一句休眠语句，意思是15秒后再执行后续代码。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>sleep 15         #15秒后再执行下面的代码<br>svc wifi disable      #关闭wifi</p>
+<p>while [ 1 ]      #死循环，一直执行<br>do<br>    rm_code&#x3D;<code>getevent -c 1 /dev/input/event0</code>	 #监测按键</p>
+<pre><code>if [ &quot;$rm_code&quot; = &quot;0001 003c 00000001&quot; ] ; then   #如果监测到按键为F2键，则
+    svc wifi enable								  #开启wifi
+    ifconfig eth0 down						      #关闭有线网络
+   print $rm_code                                 #打印按键（无用，可删），打开当贝桌面
+   am start -n com.dangbei.tvlauncher/com.dangbei.launcher.ui.main.MainActivity
+ fi
+if [ &quot;$rm_code&quot; = &quot;0001 0066 00000001&quot; ] ; then   #如果监测到按键为home键，则
+    ifconfig eth0 up							  #开启有线网络
+    svc wifi disable						      #关闭wifi
+   print $rm_code                                 #打印按键代码（无用，可删）
+ fi
+</code></pre>
+<p>done</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​		该脚本我是在某个大佬的exitIPTV.sh脚本的基础上修改的，这个exitIPTV.sh的代码的大概意思就是当监测到按键的代码就打开当贝桌面。我试了一下这个脚本是能够成功运行的，主要还是代码比较短，而且功能可以成功实现，因此我就在该脚本的基础上增加了if判断，和wifi、有线网络的开关等代码。十分感谢该大佬，正是因为这个exitIPTV.sh脚本的成功执行，才让我明确了思路。</span><br><span class="line"></span><br><span class="line">参考 [一种全新通用的解决无法从IPTV界面切换回当贝桌面的全新...._华为悦盒_ZNDS (2023_8_2 18_48_39).html](..\html\一种全新通用的解决无法从IPTV界面切换回当贝桌面的全新...._华为悦盒_ZNDS (2023_8_2 18_48_39).html) </span><br><span class="line"></span><br><span class="line">​		这个脚本建议使用notepad++创建个.sh文件（改后缀），然后复制进去，而且一定要是Unix（LF）模式，可以在notepad++右下角修改</span><br><span class="line"></span><br><span class="line">​		如果想知道机顶盒内有什么文件可以使用 [script manager.apk](..\apk\script manager.apk) 或者mt管理器</span><br><span class="line"></span><br><span class="line">​		找到根目录下的init.rc文件（不知道该文件在哪里可以用mt管理器搜索），将其用adb命令复制到电脑，然后打开。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>#然后在里面找类似下面的代码，记得是找.sh脚本的服务，下面代码的意思应该是给startstbagent.sh权限，让其能开机自启，所以找到该脚本，把我们的shell代码复制到后面或者前面，又或者干脆清空原代码，只留下我们的shell代码<br>service stbdetector  &#x2F;system&#x2F;bin&#x2F;startstbagent.sh<br>    class main<br>     user root<br>     group root</p>
+<pre><code>
+​		把修改后的shell脚本再推送回机顶盒原位置，重启尝试shell脚本是否开机启动即可。
+
+
+
+## 总结
+
+​		心路历程写了一大堆，而下面的步骤其实很短很简单。写完才发现其实实现这个双网双界面并不困难，只是当时自己不知道往哪个方向走，什么方法都试试，走了很多很多的弯路，最终才探索出来正确的道路。其实感觉一路下来收获也挺大的，一次次地尝试让我什么都涉略了一些，接触了adb，光猫后台，路由器，网线的插法，修改遥控器键位功能，shell脚本等。自己在这过程中不断地去思考怎么样才能达到更好，主动去查教程学知识点，我发现必须是现实需要才会去积极主动地学习，才能更好地掌握知识。就像我当初对shell脚本一窍不通，但我发现我要实现我的目标就必须利用它，然后才会去主动接触它，学习它。还有个感悟就是代码真的不能照搬别人的，要有自己的思路。我当时看到别人的一大段代码，我看不懂，就想直接发送到机顶盒去运行看看能不能成功，但我心里完全没底，觉得能成功就怪了，因为大部分的代码我都不知道它的作用，如果成功那也是运气。后来我尝试按自己的想法编写代码，发现其实只要大约20行的代码就能解决问题，我当时很兴奋，因为自己对shell脚本了解的不多，居然能够凭借自己的思路来编写代码解决问题。同时也发现并不是别人的代码就很厉害，也不是越大段代码就越厉害的，因为别人的代码具有特殊性。同时对比了一下别人的思路和代码量，突然觉得其实自己不比别人差，甚至比个别的思路和代码量方面好不少。当然我这算是站在前人的肩膀上继续创新，还是各位大佬牛逼哈哈哈！总之按自己的思路去编写代码我觉得这是一件很重要的事情！
+
+## 保存一下文件
+
+ [exitIPTV.zip](..\sh\exitIPTV.zip)  [startstbagent.sh](..\sh\startstbagent.sh)  [（原版）startstbagent.sh](..\sh\（原版）startstbagent.sh) 
+</code></pre>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搞机教程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/08/01/iptv%E5%92%8Cwifi%E5%8D%95%E7%BA%BF%E5%8F%8C%E7%BD%91%E6%95%99%E7%A8%8B%EF%BC%88%E9%AD%94%E7%99%BE%E7%9B%92%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-初学CTF第三周——时间盲注" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -468,6 +610,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">搞机教程</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CTF</a>
