@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://xiaoupeng.github.io/img/image-20231028214424227.png">
 <meta property="og:image" content="https://xiaoupeng.github.io/img/image-20231028221646882.png">
 <meta property="article:published_time" content="2023-10-28T11:10:28.000Z">
-<meta property="article:modified_time" content="2023-10-28T14:20:02.309Z">
+<meta property="article:modified_time" content="2023-10-28T14:51:14.862Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="ctf-mobile">
 <meta name="twitter:card" content="summary">
@@ -208,10 +208,10 @@
 <p><img src="/../img/image-20231028191857665.png" alt="image-20231028191857665"></p>
 <p>可以看到入口应该是这个FirstTest这个类，去找代码看看</p>
 <p><img src="/../img/image-20231028192121379.png" alt="image-20231028192121379"></p>
-<p>这个类的代码是这样的，可以看到a这个类在创建的时候参数带有“flag”这个字符串，先去看看这个a类是什么东东</p>
+<p>这个类的代码是这样的，可以看到haha这个a类的实例在创建的时候参数带有“flag”这个字符串，先去看看这个a类是什么东东</p>
 <p><img src="/../img/image-20231028202322201.png" alt="image-20231028202322201"></p>
 <p>函数a其实是a类的构造函数，它接收一个Context对象，然后通过getSharePreferences获得名为arg2的SharePreferences对象（这个对象是以键值对的方式将一些数据存到xml文件中，这个文件在data&#x2F;data&#x2F;对应app包名&#x2F;shared_prefs文件夹下面。），将这个对象赋值给editor。</p>
-<p>函数b是把键为“DATA”对应的值清空，函数c是获得键为“DATA”对应的值，函数d是将函数c中获得的值追加到最后。</p>
+<p>函数b是把键为“DATA”对应的值清空，函数c是获得键为“DATA”对应的值，函数d是在”DATA”键对应的原值的基础上再加上字符串arg1</p>
 <p><img src="/../img/image-20231028204658180.png" alt="image-20231028204658180"></p>
 <p>回到这里，所以①行代码的意思其实是返回（若不存在则是创建）一个名为flag的xml文件。</p>
 <p>②行代码是往键为DATA对应的值里写入YmF6aW5nYWFhYQ&#x3D;&#x3D;，这个值一看就进行了base64加密（因为后面的&#x3D;&#x3D;是由于base64加密时分组，组数不够用&#x3D;来补的，所以也算是base64加密后的数据的一个标志），解密后为bazingaaaa，不是我们要的flag，看来是用来迷糊人的。</p>
